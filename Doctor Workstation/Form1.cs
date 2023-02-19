@@ -19,7 +19,7 @@ namespace Doctor_Workstation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("123");
+            MessageBox.Show("123"); MessageBox.Show("123");
         }
     }
 }
