@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using  Doctor_Workstation.公共类;
 
 namespace Doctor_Workstation
 {
@@ -42,6 +43,7 @@ namespace Doctor_Workstation
             sqlConnection.Close();
             if (rowCount == 1)
             {
+                User.UserID = txb_LoginID.Text;
                 MessageBox.Show("登录成功。");
                 frm_WorkStationMainPage frm_WorkStationMainPage = new frm_WorkStationMainPage();
                 this.Hide();

@@ -65,13 +65,24 @@
     <Compile Include="frm_WorkStationMainPage.Designer.cs">
       <DependentUpon>frm_WorkStationMainPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_NewCaseHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_NewCaseHistory.Designer.cs">
+      <DependentUpon>frm_NewCaseHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="公共类\Patient.cs" />
+    <Compile Include="公共类\User.cs" />
     <EmbeddedResource Include="frm_MainLogin.resx">
       <DependentUpon>frm_MainLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_NewCaseHistory.resx">
+      <DependentUpon>frm_NewCaseHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_WorkStationMainPage.resx">
       <DependentUpon>frm_WorkStationMainPage.cs</DependentUpon>
@@ -98,5 +109,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
