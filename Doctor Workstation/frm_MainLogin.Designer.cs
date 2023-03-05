@@ -63,9 +63,9 @@
             this.lbl_VisionName.ForeColor = System.Drawing.Color.Blue;
             this.lbl_VisionName.Location = new System.Drawing.Point(227, 175);
             this.lbl_VisionName.Name = "lbl_VisionName";
-            this.lbl_VisionName.Size = new System.Drawing.Size(55, 16);
+            this.lbl_VisionName.Size = new System.Drawing.Size(63, 16);
             this.lbl_VisionName.TabIndex = 2;
-            this.lbl_VisionName.Text = "测试版";
+            this.lbl_VisionName.Text = "开发ing";
             // 
             // frm_MainLogin
             // 

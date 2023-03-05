@@ -6,22 +6,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Windows.Forms;
-using  Doctor_Workstation.公共类;
+using System.Data.SqlClient;
+using Doctor_Workstation.公共类;
 
 namespace Doctor_Workstation
 {
-    public partial class frm_Login : Form
+    public partial class frm_DoctorSingnature : Form
     {
-        public frm_Login()
+        public frm_DoctorSingnature()
         {
             InitializeComponent();
-        }
-
-        private void frm_Login_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btn_Confirm_Click(object sender, EventArgs e)
@@ -34,7 +29,7 @@ namespace Doctor_Workstation
                 $"SELECT COUNT(1) FROM tb_User" +
                 $" WHERE UserID=@UserID" +
                 $" AND Password=HASHBYTES('MD5',@Password);";
-            sqlCommand.Parameters.AddWithValue("@UserID", txb_LoginID.Text.Trim());
+            sqlCommand.Parameters.AddWithValue("@UserID", txb_UserID.Text.Trim());
             sqlCommand.Parameters["@UserID"].SqlDbType = SqlDbType.VarChar;
             sqlCommand.Parameters.AddWithValue("@Password", txb_Password.Text.Trim());
             sqlCommand.Parameters["@Password"].SqlDbType = SqlDbType.VarChar;
@@ -43,12 +38,25 @@ namespace Doctor_Workstation
             sqlConnection.Close();
             if (rowCount == 1)
             {
-                User.UserID = txb_LoginID.Text;
-                MessageBox.Show("登录成功。");
-                frm_WorkStationMainPage frm_WorkStationMainPage = new frm_WorkStationMainPage();
-                this.Hide();
-                frm_WorkStationMainPage.ShowDialog();
-                this.Dispose();
+                SqlCommand sqlCommand2 = new SqlCommand();
+                sqlCommand2.Connection=sqlConnection;
+                sqlCommand2.CommandText =
+                    $@"UPDATE tb_Patient SET CaseHistory='移出病历'WHERE PatientID='{Patient.PatientID}';";
+                sqlConnection.Open();
+                int RowAffected = sqlCommand2.ExecuteNonQuery();
+                sqlConnection.Close();
+                if(RowAffected>0)
+                {
+                    MessageBox.Show("完成医生签名,病历已移出");
+                    frm_WorkStationMainPage frm_WorkStationMainPage = new frm_WorkStationMainPage();
+                    this.Hide();
+                    frm_WorkStationMainPage.ShowDialog();
+                    this.Dispose();
+                }
+
+
+
+
             }
             else
             {
@@ -56,6 +64,14 @@ namespace Doctor_Workstation
                 this.txb_Password.Focus();
                 this.txb_Password.SelectAll();
             }
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            frm_WorkStationMainPage frm_WorkStationMainPage = new frm_WorkStationMainPage();
+            this.Hide();
+            frm_WorkStationMainPage.ShowDialog();
+            this.Dispose();
         }
     }
 }
