@@ -93,6 +93,8 @@
     <EmbeddedResource Include="frm_DoctorSingnature.resx">
       <DependentUpon>frm_DoctorSingnature.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="公共类\Patient.cs" />
+    <Compile Include="公共类\User.cs" />
     <EmbeddedResource Include="frm_MainLogin.resx">
       <DependentUpon>frm_MainLogin.cs</DependentUpon>
     </EmbeddedResource>

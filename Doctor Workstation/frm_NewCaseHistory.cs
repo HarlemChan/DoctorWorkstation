@@ -67,7 +67,6 @@ namespace Doctor_Workstation
                 "Server=(local);Database=DoctorWorkstation;Integrated Security=sspi";
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = sqlConnection;
-            sqlCommand.CommandText = $@"UPDATE tb_Patient SET DoctorID='{User.UserID}',DoctorName ='{User.UserName}',DoctorDepartment='{User.Department}',CaseHistory='正常状态' WHERE PatientID='{patientID}';";
             sqlConnection.Open();
             int RowAffected =sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
